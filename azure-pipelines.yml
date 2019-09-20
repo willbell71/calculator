@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    npm i
+    npm run lint
+    npm test
+    npm run build
+  displayName: 'Build, test ReactTS client'
+  name: 'ReactTSBuild'
+  workingDirectory: 'calculator-reactts'
+  failOnStderr: false
+
+- script: |
+    sudo npm install -g @angular/cli
+    npm i
+    ng lint
+    ng test
+    ng build --prod
+  displayName: 'Build, test Angular client'
+  name: 'AngularBuild'
+  workingDirectory: 'calculator-angular'
+  failOnStderr: false
