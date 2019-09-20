@@ -1,2 +1,3 @@
-# calculator
-CSS Grid example
+# Calculator
+
+Simple calculator UI using CSS grid.
