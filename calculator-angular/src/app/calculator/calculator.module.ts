@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorButtonComponent } from './calculator-button/calculator-button.component';
 import { CalculatorDisplayComponent } from './calculator-display/calculator-display.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { CalculatorDisplayComponent } from './calculator-display/calculator-disp
     CalculatorDisplayComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+
+    CoreModule
   ],
   exports: [
     CalculatorComponent
