@@ -22,8 +22,7 @@ export class Calculator extends React.Component {
 
         <CalculatorButton
           className="calculator__element calculator__element--value calculator__element--three-wide calculator__element--small"
-          cap="clear"
-          />
+          cap="clear"/>
         <CalculatorButton
           className="calculator__element calculator__element--action"
           cap="&divide;"/>
