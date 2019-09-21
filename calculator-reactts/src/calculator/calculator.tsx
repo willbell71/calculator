@@ -4,11 +4,20 @@ import { CalculatorButton } from './calculator-button/calculator-button';
 import { CalculatorDisplay } from './calculator-display/calculator-display';
 
 import './styles.scss';
+import { ICalculatorService } from './calculator-service/icalculator-service';
+
+/**
+ * Component props.
+ * @property {ICalculatorService} service - calculator service provider.
+ */
+type TProps = {
+  service: ICalculatorService;
+};
 
 /**
  * Calculator component.
  */
-export class Calculator extends React.Component {
+export class Calculator extends React.Component<TProps> {
   /**
    * Render.
    * @return {JSX.Element} component render.

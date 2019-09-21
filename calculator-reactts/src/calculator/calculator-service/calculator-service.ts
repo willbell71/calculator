@@ -1,16 +1,6 @@
-import { Injectable } from '@angular/core';
+import { ICalculatorService } from './icalculator-service';
 
-import { ICalculator } from './icalculator';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class CalculatorService implements ICalculator {
-  /**
-   * Constructor.
-   */
-  public constructor() { }
-
+export class CalculatorService implements ICalculatorService {
   /**
    * Divide two numbers.
    * @param {number} first - the number to divide into.

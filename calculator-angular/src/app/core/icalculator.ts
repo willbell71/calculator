@@ -16,7 +16,7 @@ export interface ICalculator {
   subtract: (first: number, second: number) => number;
 
   /**
-   * Divide two numbers.
+   * Add two numbers.
    * @param {number} first - the number to add to.
    * @param {number} second - the value to add.
    * @return {number} result of the add.
