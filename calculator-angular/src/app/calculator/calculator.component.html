@@ -1,32 +1,11 @@
 <section class="calculator">
   <app-calculator-display class="calculator__element calculator__element--four-wide" ></app-calculator-display>
 
-  <!-- clear  -->
-  <app-calculator-button class="calculator__element calculator__element--value calculator__element--three-wide calculator__element--small" cap="clear"></app-calculator-button>
-  <!-- divide -->
-  <app-calculator-button cap="&divide;" class="calculator__element calculator__element--action"></app-calculator-button>
-  <!-- 7 -->
-  <app-calculator-button cap="7" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 8 -->
-  <app-calculator-button cap="8" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 9 -->
-  <app-calculator-button cap="9" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- subtract -->
-  <app-calculator-button cap="-" class="calculator__element calculator__element--action"></app-calculator-button>
-  <!-- 4 -->
-  <app-calculator-button cap="4" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 5 -->
-  <app-calculator-button cap="5" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 6 -->
-  <app-calculator-button cap="6" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- plus -->
-  <app-calculator-button cap="+" class="calculator__element calculator__element--action"></app-calculator-button>
-  <!-- 1 -->
-  <app-calculator-button cap="1" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 2 -->
-  <app-calculator-button cap="2" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- 3 -->
-  <app-calculator-button cap="3" class="calculator__element calculator__element--value"></app-calculator-button>
-  <!-- total -->
-  <app-calculator-button cap="=" class="calculator__element calculator__element--action"></app-calculator-button>
+  <ng-container *ngFor="let button of buttons; let index = index">
+    <app-calculator-button
+      [tabindex]="index + 1"
+      [class]="button.classes"
+      [cap]="button.cap">
+    </app-calculator-button>
+  </ng-container>
 </section>
