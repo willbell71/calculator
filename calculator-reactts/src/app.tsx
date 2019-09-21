@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as reactDOM from 'react-dom';
 
+import { Calculator } from './calculator/calculator';
+
 import './styles.scss';
 
 /**
@@ -13,7 +15,9 @@ class App extends React.Component {
    */
   public render(): JSX.Element {
     return (
-      <h1>Test!</h1>
+      <main className="container">
+        <Calculator/>
+      </main>
     );
   }
 }

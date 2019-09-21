@@ -15,6 +15,7 @@ $color-red-700: #C53030;
   font-size: 2rem;
   height: 64px;
   transition-duration: 300ms;
+  user-select: none;
 }
 
 .calculator__element--small {
