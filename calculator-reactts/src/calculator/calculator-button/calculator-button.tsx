@@ -10,6 +10,7 @@ import './styles.scss';
 export type TProps = {
   cap: string;
   className: string;
+  tabIndex: number;
 };
 
 /**
@@ -24,7 +25,7 @@ export class CalculatorButton extends React.Component<TProps> {
     const classes = this.props.className + ' calculator-button';
 
     return (
-      <div className={ classes }>
+      <div tabIndex={ this.props.tabIndex } className={ classes }>
         <p>{ this.props.cap }</p>
       </div>
     );

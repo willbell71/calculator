@@ -11,7 +11,8 @@ let wrapper: enzyme.ShallowWrapper<TProps, {}, CalculatorButton>;
 beforeEach(() => {
   props = {
     cap: 'test',
-    className: ''
+    className: '',
+    tabIndex: 1
   };
 
   wrapper = enzyme.shallow(<CalculatorButton {...props}/>);

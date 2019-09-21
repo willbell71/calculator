@@ -37,7 +37,8 @@ $color-red-700: #C53030;
   color: $color-gray-200;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $color-red-700;
   }
 }
@@ -47,7 +48,8 @@ $color-red-700: #C53030;
   color: $color-gray-800;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: $color-indigo-200;
   }
 }
