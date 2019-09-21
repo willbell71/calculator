@@ -10,7 +10,8 @@ describe('CalculatorComponent', () => {
     calculatorService = {
       add: jasmine.createSpy(),
       subtract: jasmine.createSpy(),
-      divide: jasmine.createSpy()
+      divide: jasmine.createSpy(),
+      multiply: jasmine.createSpy()
     };
     component = new CalculatorComponent(calculatorService);
   });

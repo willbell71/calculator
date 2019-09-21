@@ -37,7 +37,7 @@ export class CalculatorComponent implements OnInit {
       cap: '9'
     }, {
       classes: 'calculator__element calculator__element--action',
-      cap: '-'
+      cap: 'x'
     }, {
       classes: 'calculator__element calculator__element--value',
       cap: '4'
@@ -49,7 +49,7 @@ export class CalculatorComponent implements OnInit {
       cap: '6'
     }, {
       classes: 'calculator__element calculator__element--action',
-      cap: '+'
+      cap: '-'
     }, {
       classes: 'calculator__element calculator__element--value',
       cap: '1'
@@ -59,6 +59,12 @@ export class CalculatorComponent implements OnInit {
     }, {
       classes: 'calculator__element calculator__element--value',
       cap: '3'
+    }, {
+      classes: 'calculator__element calculator__element--action',
+      cap: '+'
+    }, {
+      classes: 'calculator__element calculator__element--value calculator__element--three-wide',
+      cap: '0'
     }, {
       classes: 'calculator__element calculator__element--action',
       cap: '='
