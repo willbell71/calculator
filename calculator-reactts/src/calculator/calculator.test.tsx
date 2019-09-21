@@ -12,6 +12,7 @@ let wrapper: enzyme.ShallowWrapper<{}, {}, Calculator>;
 beforeEach(() => {
   service = {
     divide: () => 0,
+    multiply: () => 0,
     subtract: () => 0,
     add: () => 0
   };

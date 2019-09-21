@@ -14,6 +14,12 @@ describe('CalculatorContext', () => {
     });
   });
 
+  describe('multiply', () => {
+    it('should multiply the first number by the second', () => {
+      expect(service.multiply(8, 2)).toEqual(16);
+    });
+  });
+  
   describe('subtract', () => {
     it('should subtract the second number from the first number', () => {
       expect(service.subtract(7, 2)).toEqual(5);

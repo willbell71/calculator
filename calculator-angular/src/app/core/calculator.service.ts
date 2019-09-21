@@ -22,6 +22,16 @@ export class CalculatorService implements ICalculator {
   }
 
   /**
+   * Multiply two numbers.
+   * @param {number} first - the number to multiply.
+   * @param {number} second - the value to multiply by.
+   * @return {number} result of the division.
+   */
+  public multiply(first: number, second: number): number {
+    return first * second;
+  }
+
+  /**
    * Subtract two numbers.
    * @param {number} first - the number to subtract from.
    * @param {number} second - the value to subtract.

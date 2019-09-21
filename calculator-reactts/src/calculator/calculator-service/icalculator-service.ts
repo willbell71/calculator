@@ -7,6 +7,14 @@ export interface ICalculatorService {
    */
   divide: (first: number, second: number) => number;
 
+ /**
+   * Multiply two numbers.
+   * @param {number} first - the number to multiply.
+   * @param {number} second - the value to multiply by.
+   * @return {number} result of the division.
+   */
+  multiply: (first: number, second: number) => number;
+
   /**
    * Subtract two numbers.
    * @param {number} first - the number to subtract from.

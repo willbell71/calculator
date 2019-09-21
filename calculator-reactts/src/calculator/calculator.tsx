@@ -47,7 +47,7 @@ export class Calculator extends React.Component<TProps> {
     }, {
       id: 5,
       classes: 'calculator__element calculator__element--action',
-      cap: '-'
+      cap: 'x'
     }, {
       id: 6,
       classes: 'calculator__element calculator__element--value',
@@ -63,7 +63,7 @@ export class Calculator extends React.Component<TProps> {
     }, {
       id: 9,
       classes: 'calculator__element calculator__element--action',
-      cap: '+'
+      cap: '-'
     }, {
       id: 10,
       classes: 'calculator__element calculator__element--value',
@@ -79,9 +79,16 @@ export class Calculator extends React.Component<TProps> {
     }, {
       id: 13,
       classes: 'calculator__element calculator__element--action',
+      cap: '+'
+    }, {
+      id: 14,
+      classes: 'calculator__element calculator__element--value calculator__element--three-wide',
+      cap: '0'
+    }, {
+      id: 15,
+      classes: 'calculator__element calculator__element--action',
       cap: '='
     }];
-
 
     return (
       <section className="calculator">
