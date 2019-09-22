@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CalculatorService } from '../core/calculator.service';
+import { CalculatorLogicService } from '../core/calculator-logic.service';
 
 /**
  * Calculator component.
@@ -14,11 +14,14 @@ export class CalculatorComponent implements OnInit {
   // @member {{cap: string; classes: string}[]} buttons - list of buttons to build the calculator UI.
   public buttons: {cap: string; classes: string}[] = [];
 
+  // @member {string} value - current value display on the calculator.
+  public value: string = '0';
+
   /**
    * Constructor.
-   * @param {calculatorService} calculator - calculator service provider.
+   * @param {CalculatorLogicService} calculatorLogic - calculator logic service provider.
    */
-  public constructor(private calculator: CalculatorService) {
+  public constructor(private calculatorLogic: CalculatorLogicService) {
     // button definitions
     this.buttons = [{
       classes: 'calculator__element calculator__element--value calculator__element--three-wide calculator__element--small',
@@ -75,5 +78,26 @@ export class CalculatorComponent implements OnInit {
    * On init lifecycle.
    */
   public ngOnInit(): void {
+  }
+
+  /**
+   * Handle mouse click event.
+   * @param {MouseEvent} event - event that occured.
+   */
+  public clickButton(event: MouseEvent): void {
+    // pass element that was clicked to input handler
+    this.value = this.calculatorLogic.handleInput((event.target as HTMLElement).innerText);
+  }
+
+  /**
+   * Handle keyboard selection event ( space or enter ).
+   * @param {KeyboardEvent} event - event that occurred,
+   */
+  public pressedKey(event: KeyboardEvent): void {
+    if ('Enter' === event.key || ' ' === event.key) {
+      if (event.target && event.target instanceof HTMLElement) {
+        this.value = this.calculatorLogic.handleInput((event.target as HTMLElement).innerText);
+      }
+    }
   }
 }

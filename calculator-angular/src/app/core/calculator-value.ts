@@ -1,6 +1,9 @@
-import { IValue } from './ivalue';
+import { ICalculatorValue } from './icalculator-value';
 
-export class Value implements IValue {
+/**
+ * Calculator value.
+ */
+export class CalculatorValue implements ICalculatorValue {
   // stored value
   private value: number = 0;
 
