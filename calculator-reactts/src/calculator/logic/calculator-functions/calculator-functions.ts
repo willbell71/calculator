@@ -1,6 +1,9 @@
-import { ICalculatorService } from './icalculator-service';
+import { ICalculatorFunctions } from './icalculator-functions';
 
-export class CalculatorService implements ICalculatorService {
+/**
+ * Calculator Functions.
+ */
+export class CalculatorFunctions implements ICalculatorFunctions {
   /**
    * Divide two numbers.
    * @param {number} first - the number to divide into.

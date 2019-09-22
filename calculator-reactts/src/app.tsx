@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as reactDOM from 'react-dom';
 
 import { Calculator } from './calculator/calculator';
-import { CalculatorService } from './calculator/calculator-service/calculator-service';
-import { ICalculatorService } from './calculator/calculator-service/icalculator-service';
+import { CalculatorFunctions } from './calculator/logic/calculator-functions/calculator-functions';
+import { CalculatorLogic } from './calculator/logic/calculator-logic/calculator-logic';
+import { ICalculatorLogic } from './calculator/logic/calculator-logic/icalculator-logic';
 
 import './styles.scss';
 
@@ -11,7 +12,8 @@ import './styles.scss';
  * App component.
  */
 class App extends React.Component {
-  private calculatorService: ICalculatorService = new CalculatorService();
+  // calculator logic
+  private calculatorLogic: ICalculatorLogic = new CalculatorLogic(new CalculatorFunctions());
 
   /**
    * Render.
@@ -20,7 +22,7 @@ class App extends React.Component {
   public render(): JSX.Element {
     return (
       <main className="container">
-        <Calculator service={this.calculatorService}/>
+        <Calculator calculatorLogic={this.calculatorLogic}/>
       </main>
     );
   }

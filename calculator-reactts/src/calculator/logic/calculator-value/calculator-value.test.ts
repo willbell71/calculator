@@ -1,9 +1,9 @@
-import { IValue } from './ivalue';
-import { Value } from './value';
+import { ICalculatorValue } from './icalculator-value';
+import { CalculatorValue } from './calculator-value';
 
-let value: IValue;
-describe('Value', () => {
-  beforeEach(() => value = new Value());
+let value: ICalculatorValue;
+describe('CalculatorValue', () => {
+  beforeEach(() => value = new CalculatorValue());
 
   it('should be created', () => {
     expect(value).toBeTruthy();
