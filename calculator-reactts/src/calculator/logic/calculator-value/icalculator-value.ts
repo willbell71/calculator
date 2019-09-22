@@ -1,7 +1,7 @@
 /**
- * Value interface.
+ * Calculator Value interface.
  */
-export interface IValue {
+export interface ICalculatorValue {
   /**
    * Store a given value.
    * @param {number} value - value to store.

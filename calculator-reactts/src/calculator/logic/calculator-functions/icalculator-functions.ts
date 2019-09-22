@@ -1,4 +1,7 @@
-export interface ICalculatorService {
+/**
+ * Calculator Functions interface.
+ */
+export interface ICalculatorFunctions {
   /**
    * Divide two numbers.
    * @param {number} first - the number to divide into.

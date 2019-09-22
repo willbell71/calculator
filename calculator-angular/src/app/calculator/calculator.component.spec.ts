@@ -20,7 +20,8 @@ describe('CalculatorComponent', () => {
 
   describe('clickButton', () => {
     it('should call logic for button', () => {
-      const target: HTMLElement = {innerText: '8'} as unknown as HTMLElement;
+      const target: HTMLElement = document.createElement('p');
+      target.innerText = '8';
       const mouseEvent: MouseEvent = {target} as unknown as MouseEvent;
 
       component.clickButton(mouseEvent);
