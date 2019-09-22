@@ -1,11 +1,28 @@
-export interface ICalculator {
+import { Injectable } from '@angular/core';
+
+import { ICalculatorFunctions } from './icalculator-functions';
+
+/**
+ * Calculator functions service.
+ */
+@Injectable({
+  providedIn: 'root'
+})
+export class CalculatorFunctionsService implements ICalculatorFunctions {
+  /**
+   * Constructor.
+   */
+  public constructor() { }
+
   /**
    * Divide two numbers.
    * @param {number} first - the number to divide into.
    * @param {number} second - the value to divide by.
    * @return {number} result of the division.
    */
-  divide: (first: number, second: number) => number;
+  public divide(first: number, second: number): number {
+    return first / second;
+  }
 
   /**
    * Multiply two numbers.
@@ -13,7 +30,9 @@ export interface ICalculator {
    * @param {number} second - the value to multiply by.
    * @return {number} result of the division.
    */
-  multiply: (first: number, second: number) => number;
+  public multiply(first: number, second: number): number {
+    return first * second;
+  }
 
   /**
    * Subtract two numbers.
@@ -21,7 +40,9 @@ export interface ICalculator {
    * @param {number} second - the value to subtract.
    * @return {number} result of the subtraction.
    */
-  subtract: (first: number, second: number) => number;
+  public subtract(first: number, second: number): number {
+    return first - second;
+  }
 
   /**
    * Add two numbers.
@@ -29,5 +50,7 @@ export interface ICalculator {
    * @param {number} second - the value to add.
    * @return {number} result of the add.
    */
-  add: (first: number, second: number) => number;
+  public add(first: number, second: number): number {
+    return first + second;
+  }
 }
