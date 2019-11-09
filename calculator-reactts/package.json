@@ -10,6 +10,9 @@
     },
     "preset": "ts-jest"
   },
+  "browserslist": [
+    ">1%"
+  ],
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch",

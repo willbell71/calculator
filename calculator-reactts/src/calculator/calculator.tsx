@@ -60,74 +60,74 @@ export class Calculator extends React.Component<TProps, TState> {
     // button definitions
     const buttons: {id: number, cap: string; classes: string}[] = [{
       id: 0,
-      classes: 'calculator__element calculator__element--value calculator__element--three-wide calculator__element--small',
+      classes: 'calculator__element calculator__element--value calculator__element--small calculator__element--cell-clear',
       cap: 'clear'
     }, {
       id: 1,
-      classes: 'calculator__element calculator__element--action',
+      classes: 'calculator__element calculator__element--action calculator__element--cell-divide',
       cap: '\u00f7'
     }, {
       id: 2,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-seven',
       cap: '7'
     }, {
       id: 3,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-eight',
       cap: '8'
     }, {
       id: 4,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-nine',
       cap: '9'
     }, {
       id: 5,
-      classes: 'calculator__element calculator__element--action',
+      classes: 'calculator__element calculator__element--action calculator__element--cell-multiply',
       cap: 'x'
     }, {
       id: 6,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-four',
       cap: '4'
     }, {
       id: 7,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-five',
       cap: '5'
     }, {
       id: 8,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-six',
       cap: '6'
     }, {
       id: 9,
-      classes: 'calculator__element calculator__element--action',
+      classes: 'calculator__element calculator__element--action calculator__element--cell-subtract',
       cap: '-'
     }, {
       id: 10,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-one',
       cap: '1'
     }, {
       id: 11,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-two',
       cap: '2'
     }, {
       id: 12,
-      classes: 'calculator__element calculator__element--value',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-three',
       cap: '3'
     }, {
       id: 13,
-      classes: 'calculator__element calculator__element--action',
+      classes: 'calculator__element calculator__element--action calculator__element--cell-plus',
       cap: '+'
     }, {
       id: 14,
-      classes: 'calculator__element calculator__element--value calculator__element--three-wide',
+      classes: 'calculator__element calculator__element--value calculator__element--cell-zero',
       cap: '0'
     }, {
       id: 15,
-      classes: 'calculator__element calculator__element--action',
+      classes: 'calculator__element calculator__element--action calculator__element--cell-equal',
       cap: '='
     }];
 
     return (
       <section className="calculator">
         <CalculatorDisplay
-          className="calculator__element calculator__element--four-wide"
+          className="calculator__element calculator__element--cell-display"
           value={ this.state.value }/>
 
         {buttons.map((button: {id: number; cap: string; classes: string}, index: number) => (
