@@ -18,72 +18,11 @@ $color-red-700: #C53030;
   width: 256px;
 }
 
-.calculator__element--cell-display {
-  grid-area: display;
-}
-
-.calculator__element--cell-clear {
-  grid-area: clear;
-}
-
-.calculator__element--cell-divide {
-  grid-area: divide;
-}
-
-.calculator__element--cell-multiply {
-  grid-area: multiply;
-}
-
-.calculator__element--cell-subtract {
-  grid-area: subtract;
-}
-
-.calculator__element--cell-plus {
-  grid-area: plus;
-}
-
-.calculator__element--cell-equal {
-  grid-area: equal;
-}
-
-.calculator__element--cell-zero {
-  grid-area: zero;
-}
-
-.calculator__element--cell-one {
-  grid-area: one;
-}
-
-.calculator__element--cell-two {
-  grid-area: two;
-}
-
-.calculator__element--cell-three {
-  grid-area: three;
-}
-
-.calculator__element--cell-four {
-  grid-area: four;
-}
-
-.calculator__element--cell-five {
-  grid-area: five;
-}
-
-.calculator__element--cell-six {
-  grid-area: six;
-}
-
-.calculator__element--cell-seven {
-  grid-area: seven;
-}
-
-.calculator__element--cell-eight {
-  grid-area: eight;
-}
-
-.calculator__element--cell-nine {
-  grid-area: nine;
+$areas: display, clear, divide, multiply, subtract, plus, equal, zero, one, two, three, four, five, six, seven, eight, nine;
+@each $area in $areas {
+  .calculator__element--cell-#{$area} {
+    grid-area: $area;
+  }
 }
 
 .calculator__element {
