@@ -21,6 +21,16 @@ steps:
   failOnStderr: false
 
 - script: |
+    npm i
+    npm run lint
+    npm test
+    npm run build
+  displayName: 'Build, test ReactTS hookes client'
+  name: 'ReactTSHooksBuild'
+  workingDirectory: 'calculator-reactts-hooks'
+  failOnStderr: false
+
+- script: |
     sudo npm install -g @angular/cli
     npm i
     ng lint
