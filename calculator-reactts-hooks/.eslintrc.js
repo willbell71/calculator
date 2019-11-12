@@ -21,7 +21,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    '@typescript-eslint'
+    '@typescript-eslint',
+    'react-hooks'
   ],
   settings: {
     react: {
@@ -50,6 +51,9 @@ module.exports = {
     'react/no-access-state-in-setstate': 'error',
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
 
     // eslint rules - https://eslint.org/docs/rules/
     'arrow-parens': ['error', 'as-needed'],

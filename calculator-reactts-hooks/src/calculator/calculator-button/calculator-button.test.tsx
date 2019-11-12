@@ -7,7 +7,7 @@ import { CalculatorButton, TProps } from './calculator-button';
 enzyme.configure({ adapter: new Adapter() });
 
 let props: TProps;
-let wrapper: enzyme.ShallowWrapper<TProps, {}, CalculatorButton>;
+let wrapper: enzyme.ShallowWrapper;
 beforeEach(() => {
   props = {
     cap: 'test',

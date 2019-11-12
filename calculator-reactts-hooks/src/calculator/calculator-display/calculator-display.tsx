@@ -13,20 +13,15 @@ export type TProps = {
 };
 
 /**
- * Calculator display.
+ * Calculator display component.
+ * @return {JSX.Element} component render.
  */
-export class CalculatorDisplay extends React.Component<TProps> {
-  /**
-   * Render.
-   * @return {JSX.Element} component render.
-   */
-  public render(): JSX.Element {
-    const classes = this.props.className + ' calculator-display';
+export function CalculatorDisplay(props: TProps): JSX.Element {
+  const classes: string = `${props.className} calculator-display`;
 
-    return (
-      <div className={classes}>
-        <p>{ this.props.value }</p>
-      </div>
-    );
-  }
+  return (
+    <div className={classes}>
+      <p>{ props.value }</p>
+    </div>
+  );
 }

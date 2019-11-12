@@ -8,7 +8,7 @@ import { ICalculatorLogic } from './logic/calculator-logic/icalculator-logic';
 enzyme.configure({ adapter: new Adapter() });
 
 let calculatorLogic: ICalculatorLogic;
-let wrapper: enzyme.ShallowWrapper<{}, {}, Calculator>;
+let wrapper: enzyme.ShallowWrapper;
 beforeEach(() => {
   calculatorLogic = {
     handleInput: jest.fn().mockImplementation(() => '10')
@@ -30,7 +30,7 @@ describe('Calculator', () => {
       target.innerText = '8';
       const mouseEvent: React.MouseEvent = {target} as unknown as React.MouseEvent;
 
-      wrapper.instance().clickButton(mouseEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('clickHandler') as (event: React.MouseEvent) => void)(mouseEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(1);
       expect(calculatorLogic.handleInput).toHaveBeenCalledWith('8');
@@ -41,9 +41,9 @@ describe('Calculator', () => {
       target.innerText = '8';
       const mouseEvent: React.MouseEvent = {target} as unknown as React.MouseEvent;
 
-      wrapper.instance().clickButton(mouseEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('clickHandler') as (event: React.MouseEvent) => void)(mouseEvent);
 
-      expect(wrapper.instance().state.value).toEqual('10');
+      expect(wrapper.find('CalculatorDisplay').prop('value')).toEqual('10');
     });
   });
 
@@ -53,7 +53,7 @@ describe('Calculator', () => {
       target.innerText = '8';
       const keyboardEvent: React.KeyboardEvent = {key: ' ', target} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(1);
       expect(calculatorLogic.handleInput).toHaveBeenCalledWith('8');
@@ -64,7 +64,7 @@ describe('Calculator', () => {
       target.innerText = '8';
       const keyboardEvent: React.KeyboardEvent = {key: 'Enter', target} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(1);
       expect(calculatorLogic.handleInput).toHaveBeenCalledWith('8');
@@ -75,7 +75,7 @@ describe('Calculator', () => {
       target.innerText = '8';
       const keyboardEvent: React.KeyboardEvent = {key: 'a', target} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(0);
     });
@@ -83,7 +83,7 @@ describe('Calculator', () => {
     it('shouldnt call logic if no target', () => {
       const keyboardEvent: React.KeyboardEvent = {key: ' '} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(0);
     });
@@ -92,7 +92,7 @@ describe('Calculator', () => {
       const target: HTMLElement = {innerText: '8'} as unknown as HTMLElement;
       const keyboardEvent: React.KeyboardEvent = {key: ' ', target} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
       expect(calculatorLogic.handleInput).toHaveBeenCalledTimes(0);
     });
@@ -102,9 +102,9 @@ describe('Calculator', () => {
       target.innerText = '8';
       const keyboardEvent: React.KeyboardEvent = {key: ' ', target} as unknown as React.KeyboardEvent;
 
-      wrapper.instance().pressedKey(keyboardEvent);
+      (wrapper.find('CalculatorButton').at(0).prop('keyHandler') as (event: React.KeyboardEvent) => void)(keyboardEvent);
 
-      expect(wrapper.instance().state.value).toEqual('10');
+      expect(wrapper.find('CalculatorDisplay').prop('value')).toEqual('10');
     });
   });
 });
