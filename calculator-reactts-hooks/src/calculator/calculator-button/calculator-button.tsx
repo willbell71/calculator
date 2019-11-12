@@ -23,12 +23,10 @@ export type TProps = {
  * @return {JSX.Element} component rendner.
  */
 export function CalculatorButton(props: TProps): JSX.Element {
-  const classes: string = `${props.className} calculator-button`;
-
   return (
     <div
       tabIndex={ props.tabIndex }
-      className={ classes }
+      className={ `${props.className} calculator-button` }
       onClick={ props.clickHandler }
       onKeyDown={ props.keyHandler }>
 

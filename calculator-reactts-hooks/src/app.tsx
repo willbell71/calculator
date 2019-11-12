@@ -17,9 +17,9 @@ function App(): JSX.Element {
   const calculatorLogic: ICalculatorLogic = new CalculatorLogic(new CalculatorFunctions());
 
   return (
-    <main className="container">
+    <div className="container" role="main">
       <Calculator calculatorLogic={calculatorLogic}/>
-    </main>
+    </div>
   );
 }
 

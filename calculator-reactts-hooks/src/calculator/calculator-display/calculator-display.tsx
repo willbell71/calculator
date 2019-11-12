@@ -17,10 +17,8 @@ export type TProps = {
  * @return {JSX.Element} component render.
  */
 export function CalculatorDisplay(props: TProps): JSX.Element {
-  const classes: string = `${props.className} calculator-display`;
-
   return (
-    <div className={classes}>
+    <div className={ `${props.className} calculator-display` }>
       <p>{ props.value }</p>
     </div>
   );

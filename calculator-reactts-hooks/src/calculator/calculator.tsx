@@ -15,6 +15,18 @@ type TProps = {
 };
 
 /**
+ * Button definition.
+ * @property {number} id - unique id.
+ * @property {string} cap - button caption.
+ * @property {classes} string - list of classes to apply to element in DOM.
+ */
+type TButtonDef = {
+  id: number;
+  cap: string;
+  classes: string
+};
+
+/**
  * Calculator component.
  * @return {JSX.Element} component render.
  */
@@ -34,7 +46,7 @@ export function Calculator(props: TProps): JSX.Element {
   };
 
   // button definitions
-  const buttons: {id: number, cap: string; classes: string}[] = [{
+  const buttons: TButtonDef[] = [{
     id: 0,
     classes: 'calculator__element calculator__element--value calculator__element--small calculator__element--cell-clear',
     cap: 'clear'
@@ -106,7 +118,7 @@ export function Calculator(props: TProps): JSX.Element {
         className="calculator__element calculator__element--cell-display"
         value={ value }/>
 
-      {buttons.map((button: {id: number; cap: string; classes: string}, index: number) => (
+      {buttons.map((button: TButtonDef, index: number) => (
         <CalculatorButton
           key={ button.id }
           tabIndex={ index + 1 }
