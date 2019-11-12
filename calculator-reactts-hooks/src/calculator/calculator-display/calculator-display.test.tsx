@@ -7,7 +7,7 @@ import { CalculatorDisplay, TProps } from './calculator-display';
 enzyme.configure({ adapter: new Adapter() });
 
 let props: TProps;
-let wrapper: enzyme.ShallowWrapper<TProps, {}, CalculatorDisplay>;
+let wrapper: enzyme.ShallowWrapper;
 beforeEach(() => {
   props = {
     value: '1234',

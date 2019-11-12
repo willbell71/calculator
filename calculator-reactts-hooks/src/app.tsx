@@ -10,22 +10,17 @@ import './styles.scss';
 
 /**
  * App component.
+ * @return {JSX.Element} component render.
  */
-class App extends React.Component {
+function App(): JSX.Element {
   // calculator logic
-  private calculatorLogic: ICalculatorLogic = new CalculatorLogic(new CalculatorFunctions());
+  const calculatorLogic: ICalculatorLogic = new CalculatorLogic(new CalculatorFunctions());
 
-  /**
-   * Render.
-   * @return {JSX.Element} component render.
-   */
-  public render(): JSX.Element {
-    return (
-      <main className="container">
-        <Calculator calculatorLogic={this.calculatorLogic}/>
-      </main>
-    );
-  }
+  return (
+    <main className="container">
+      <Calculator calculatorLogic={calculatorLogic}/>
+    </main>
+  );
 }
 
 reactDOM.render(<App/>, document.getElementById('app'));

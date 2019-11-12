@@ -20,25 +20,20 @@ export type TProps = {
 
 /**
  * Calculator button component.
+ * @return {JSX.Element} component rendner.
  */
-export class CalculatorButton extends React.Component<TProps> {
-  /**
-   * Component render.
-   * @return {JSX.Element} component rendner.
-   */
-  public render(): JSX.Element {
-    const classes = this.props.className + ' calculator-button';
+export function CalculatorButton(props: TProps): JSX.Element {
+  const classes: string = `${props.className} calculator-button`;
 
-    return (
-      <div
-        tabIndex={ this.props.tabIndex }
-        className={ classes }
-        onClick={ this.props.clickHandler }
-        onKeyDown={ this.props.keyHandler }>
+  return (
+    <div
+      tabIndex={ props.tabIndex }
+      className={ classes }
+      onClick={ props.clickHandler }
+      onKeyDown={ props.keyHandler }>
 
-        <p>{ this.props.cap }</p>
+      <p>{ props.cap }</p>
 
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
