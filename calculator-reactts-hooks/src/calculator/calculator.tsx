@@ -2,17 +2,9 @@ import * as React from 'react';
 
 import { CalculatorButton } from './calculator-button/calculator-button';
 import { CalculatorDisplay } from './calculator-display/calculator-display';
-import { ICalculatorLogic } from './logic/calculator-logic/icalculator-logic';
+import { useCalculator } from './useCalculator';
 
 import './styles.scss';
-
-/**
- * Component props.
- * @property {ICalculatorLogic} calculatorLogic - calculator logic provider.
- */
-type TProps = {
-  calculatorLogic: ICalculatorLogic;
-};
 
 /**
  * Button definition.
@@ -30,23 +22,23 @@ type TButtonDef = {
  * Calculator component.
  * @return {JSX.Element} component render.
  */
-export function Calculator(props: TProps): JSX.Element {
-  const [value, setValue]: [string, (value: string) => void] = React.useState('0');
+export function Calculator(): JSX.Element {
+  const {value, handleInput}: {value: number, handleInput: React.Dispatch<string>} = useCalculator();
 
-  const clickButton: (event: React.MouseEvent) => void = (event: React.MouseEvent): void => {
-    setValue(props.calculatorLogic.handleInput((event.target as HTMLElement).innerText));
-  };
+  const clickButton: (event: React.MouseEvent) => void = React.useCallback((event: React.MouseEvent): void => {
+    handleInput((event.target as HTMLElement).innerText);
+  }, [handleInput]);
 
-  const pressedKey: (event: React.KeyboardEvent) => void = (event: React.KeyboardEvent): void => {
+  const pressedKey: (event: React.KeyboardEvent) => void =  React.useCallback((event: React.KeyboardEvent): void => {
     if ('Enter' === event.key || ' ' === event.key) {
       if (event.target && event.target instanceof HTMLElement) {
-        setValue(props.calculatorLogic.handleInput((event.target as HTMLElement).innerText));
+        handleInput((event.target as HTMLElement).innerText);
       }
     }
-  };
+  }, [handleInput]);
 
   // button definitions
-  const buttons: TButtonDef[] = [{
+  const buttons: TButtonDef[] = React.useMemo((): TButtonDef[] => ([{
     id: 0,
     classes: 'calculator__element calculator__element--value calculator__element--small calculator__element--cell-clear',
     cap: 'clear'
@@ -110,13 +102,13 @@ export function Calculator(props: TProps): JSX.Element {
     id: 15,
     classes: 'calculator__element calculator__element--action calculator__element--cell-equal',
     cap: '='
-  }];
+  }]), []);
 
   return (
     <section className="calculator">
       <CalculatorDisplay
         className="calculator__element calculator__element--cell-display"
-        value={ value }/>
+        value={ `${value}` }/>
 
       {buttons.map((button: TButtonDef, index: number) => (
         <CalculatorButton
