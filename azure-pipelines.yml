@@ -40,3 +40,14 @@ steps:
   name: 'AngularBuild'
   workingDirectory: 'calculator-angular'
   failOnStderr: false
+
+- script: |
+    sudo npm install -g @angular/cli
+    npm i
+    ng lint
+    ng test
+    ng build --prod
+  displayName: 'Build, test Electron Angular client'
+  name: 'AngularElectronBuild'
+  workingDirectory: 'calculator-electron'
+  failOnStderr: false

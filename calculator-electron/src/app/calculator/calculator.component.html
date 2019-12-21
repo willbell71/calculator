@@ -1,0 +1,16 @@
+<section class="calculator">
+  <app-calculator-display
+    [value]="value"
+    class="calculator__element calculator__element--four-wide">
+  </app-calculator-display>
+
+  <ng-container *ngFor="let button of buttons; let index = index">
+    <app-calculator-button
+      [tabindex]="index + 1"
+      [class]="button.classes"
+      [cap]="button.cap"
+      (click)="clickButton($event)"
+      (keydown)="pressedKey($event)">
+    </app-calculator-button>
+  </ng-container>
+</section>
