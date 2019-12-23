@@ -52,6 +52,4 @@ Development work can be carried out in the browser with Angular, then regularly 
 The app can be run with devtools automatically opened in the window, simply uncomment the following line in main.js.
 `// win.webContents.openDevTools();`
 
-Otherwise devtools can be opened once the app is running from the `View` menu, `Toggle Developer Tools`.
-
 Note the electron window is flagged as unresizeable, so the calculator view always fills the window, this will affect the devtools, comment this out in main.js ( `resizable: false,` ).  Ideally the app should resize to fill the window, and only a min width / height should be set.
