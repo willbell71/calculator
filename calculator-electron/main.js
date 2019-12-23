@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Menu } = require('electron');
 
 let win;
 createWindow = () => {
@@ -26,3 +26,14 @@ app.on('ready', createWindow);
 app.on('window-all-closed', () => app.quit());
 
 app.on('activate', () => !win && createWindow());
+
+// replace default menu
+const menu = Menu.buildFromTemplate([{
+  label: 'Calculator',
+  submenu: [{
+    label: 'Exit',
+    click: () => app.quit()
+  }]
+}]);
+
+Menu.setApplicationMenu(menu);
