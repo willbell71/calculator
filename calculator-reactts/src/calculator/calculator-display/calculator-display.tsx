@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
 import './styles.scss';
 
@@ -15,18 +15,8 @@ export type TProps = {
 /**
  * Calculator display.
  */
-export class CalculatorDisplay extends React.Component<TProps> {
-  /**
-   * Render.
-   * @return {JSX.Element} component render.
-   */
-  public render(): JSX.Element {
-    const classes = this.props.className + ' calculator-display';
-
-    return (
-      <div className={classes}>
-        <p>{ this.props.value }</p>
-      </div>
-    );
-  }
-}
+export const CalculatorDisplay: FC<TProps> = ({ value, className }: TProps): JSX.Element => (
+  <div className={`${className} calculator-display`}>
+    <p data-testid="calculator-display">{ value }</p>
+  </div>
+);

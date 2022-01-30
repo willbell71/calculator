@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as reactDOM from 'react-dom';
+import React from 'react';
+import reactDOM from 'react-dom';
 
 import { Calculator } from './calculator/calculator';
 import { CalculatorFunctions } from './calculator/logic/calculator-functions/calculator-functions';

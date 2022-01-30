@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
 import './styles.scss';
 
@@ -21,24 +21,14 @@ export type TProps = {
 /**
  * Calculator button component.
  */
-export class CalculatorButton extends React.Component<TProps> {
-  /**
-   * Component render.
-   * @return {JSX.Element} component rendner.
-   */
-  public render(): JSX.Element {
-    const classes = this.props.className + ' calculator-button';
-
-    return (
-      <div
-        tabIndex={ this.props.tabIndex }
-        className={ classes }
-        onClick={ this.props.clickHandler }
-        onKeyDown={ this.props.keyHandler }>
-
-        <p>{ this.props.cap }</p>
-
-      </div>
-    );
-  }
-}
+export const CalculatorButton: FC<TProps> = ({ cap, className, tabIndex, clickHandler, keyHandler} : TProps): JSX.Element => (
+  <div
+    tabIndex={ tabIndex }
+    className={ `${className} calculator-button` }
+    onClick={ clickHandler }
+    onKeyDown={ keyHandler }
+    data-testid="button"
+  >
+    <p>{ cap }</p>
+  </div>
+);

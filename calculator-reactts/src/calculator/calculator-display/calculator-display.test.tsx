@@ -1,26 +1,34 @@
-import * as React from 'react';
-import * as enzyme from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import { act, create, ReactTestInstance, ReactTestRenderer } from 'react-test-renderer';
 
 import { CalculatorDisplay, TProps } from './calculator-display';
 
-enzyme.configure({ adapter: new Adapter() });
-
 let props: TProps;
-let wrapper: enzyme.ShallowWrapper<TProps, {}, CalculatorDisplay>;
-beforeEach(() => {
+let renderer: ReactTestRenderer;
+let instance: ReactTestInstance;
+beforeEach(async () => {
   props = {
     value: '1234',
     className: ''
   };
 
-  wrapper = enzyme.shallow(<CalculatorDisplay {...props}/>);
+  await act(async () => {
+    renderer = create(
+      <CalculatorDisplay {...props} />
+    );
+  });
+
+  instance = renderer.root;
 });
 afterEach(() => jest.restoreAllMocks());
 
 describe('CalculatorDisplay', () => {
   it('should render', () => {
-    expect(wrapper.find('p').length).toEqual(1);
-    expect(wrapper.find('p').text()).toEqual('1234');
+    expect(instance).toBeTruthy();
+  });
+
+  it('should render value', async () => {
+    const display: ReactTestInstance = instance.findByProps({ 'data-testid': 'calculator-display' });
+    expect(display.props.children).toEqual(props.value);
   });
 });
