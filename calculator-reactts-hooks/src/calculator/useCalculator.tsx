@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Dispatch } from 'react';
 
 /**
  * Reducer state.
@@ -12,7 +12,7 @@ type TReducerState = {
   currentValue: number;
 };
 
-export function useCalculator(): {value: number, handleInput: React.Dispatch<string>} {
+export const useCalculator: () => {value: number, handleInput: Dispatch<string>} = (): {value: number, handleInput: Dispatch<string>} => {
   const applyOperation: (operation: string | undefined, previousValue: number, currentValue: number) => number =
     (operation: string | undefined, previousValue: number, currentValue: number): number => {
       switch (operation) {
@@ -23,8 +23,8 @@ export function useCalculator(): {value: number, handleInput: React.Dispatch<str
         default: return currentValue;
       }
     };
-    
-  const reducer: (state: TReducerState, action: string) => TReducerState = (state: TReducerState, action: string): TReducerState => { 
+
+  const reducer: (state: TReducerState, action: string) => TReducerState = (state: TReducerState, action: string): TReducerState => {
     switch (action) {
       case '0':
       case '1':
@@ -43,7 +43,7 @@ export function useCalculator(): {value: number, handleInput: React.Dispatch<str
             currentValue: parseInt(action, 10)
           };
         }
-  
+
         return {
           ...state,
           currentValue: (state.currentValue * 10) + parseInt(action, 10)
@@ -79,7 +79,7 @@ export function useCalculator(): {value: number, handleInput: React.Dispatch<str
     operation: undefined,
     previousValue: 0,
     currentValue: 0
-  };  
+  };
   const [state, handleInput]: [TReducerState, React.Dispatch<string>] = React.useReducer(reducer, initialState);
   return {value: state.currentValue, handleInput};
-}
+};

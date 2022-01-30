@@ -1,14 +1,12 @@
-import * as React from 'react';
-import * as enzyme from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import { act, create, ReactTestInstance, ReactTestRenderer } from 'react-test-renderer';
 
 import { CalculatorButton, TProps } from './calculator-button';
 
-enzyme.configure({ adapter: new Adapter() });
-
 let props: TProps;
-let wrapper: enzyme.ShallowWrapper;
-beforeEach(() => {
+let renderer: ReactTestRenderer;
+let instance: ReactTestInstance;
+beforeEach(async () => {
   props = {
     cap: 'test',
     className: '',
@@ -17,24 +15,31 @@ beforeEach(() => {
     keyHandler: jest.fn()
   };
 
-  wrapper = enzyme.shallow(<CalculatorButton {...props}/>);
+  await act(async () => {
+    renderer = create(
+      <CalculatorButton {...props} />
+    );
+  });
+
+  instance = renderer.root;
 });
 afterEach(() => jest.restoreAllMocks());
 
 describe('CalculatorButton', () => {
   it('should render', () => {
-    expect(wrapper.find('p').length).toEqual(1);
-    expect(wrapper.find('p').text()).toEqual('test');
+    expect(instance).toBeTruthy();
   });
 
-  it('should call clickhandle on mouse event', () => {
-    wrapper.find('div').simulate('click');
+  it('should call clickhandle on mouse event', async () => {
+    const button: ReactTestInstance = instance.findByProps({ 'data-testid': 'button' });
+    await act(async () => button.props.onClick());
 
     expect(props.clickHandler).toHaveBeenCalledTimes(1);
   });
 
-  it('should call keyhandler on keyboard event', () => {
-    wrapper.find('div').simulate('keydown');
+  it('should call keyhandler on keyboard event', async () => {
+    const button: ReactTestInstance = instance.findByProps({ 'data-testid': 'button' });
+    await act(async () => button.props.onKeyDown());
 
     expect(props.keyHandler).toHaveBeenCalledTimes(1);
   });

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC } from 'react';
 
 import './styles.scss';
 
@@ -22,16 +22,16 @@ export type TProps = {
  * Calculator button component.
  * @return {JSX.Element} component rendner.
  */
-export function CalculatorButton(props: TProps): JSX.Element {
-  return (
-    <div
-      tabIndex={ props.tabIndex }
-      className={ `${props.className} calculator-button` }
-      onClick={ props.clickHandler }
-      onKeyDown={ props.keyHandler }>
+export const CalculatorButton: FC<TProps> = ({ cap, className, tabIndex, clickHandler, keyHandler}: TProps): JSX.Element => (
+  <div
+    tabIndex={ tabIndex }
+    className={ `${className} calculator-button` }
+    onClick={ clickHandler }
+    onKeyDown={ keyHandler }
+    data-testid="button"
+  >
 
-      <p>{ props.cap }</p>
+    <p>{ cap }</p>
 
-    </div>
-  );
-};
+  </div>
+);
