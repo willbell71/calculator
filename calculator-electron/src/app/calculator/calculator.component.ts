@@ -95,7 +95,7 @@ export class CalculatorComponent implements OnInit {
    */
   public pressedKey(event: KeyboardEvent): void {
     if ('Enter' === event.key || ' ' === event.key) {
-      if (event.target && event.target instanceof HTMLElement) {
+      if (event.target) {
         this.value = this.calculatorLogic.handleInput((event.target as HTMLElement).innerText);
       }
     }

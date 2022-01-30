@@ -63,7 +63,7 @@ describe('CalculatorComponent', () => {
       expect(calculatorLogicService.handleInput).toHaveBeenCalledWith('8');
     });
 
-    it('shouldnt call logic for other key', () => {
+    it('should NOT call logic for other key', () => {
       const target: HTMLElement = document.createElement('p');
       target.innerText = '8';
       const keyboardEvent: KeyboardEvent = {key: 'a', target} as unknown as KeyboardEvent;
@@ -73,17 +73,8 @@ describe('CalculatorComponent', () => {
       expect(calculatorLogicService.handleInput).toHaveBeenCalledTimes(0);
     });
 
-    it('shouldnt call logic if no target', () => {
+    it('should NOT call logic if no target', () => {
       const keyboardEvent: KeyboardEvent = {key: ' '} as unknown as KeyboardEvent;
-
-      component.pressedKey(keyboardEvent);
-
-      expect(calculatorLogicService.handleInput).toHaveBeenCalledTimes(0);
-    });
-
-    it('shouldnt call logic if target isnt a HTML Element', () => {
-      const target: HTMLElement = {innerText: '8'} as unknown as HTMLElement;
-      const keyboardEvent: KeyboardEvent = {key: ' ', target} as unknown as KeyboardEvent;
 
       component.pressedKey(keyboardEvent);
 

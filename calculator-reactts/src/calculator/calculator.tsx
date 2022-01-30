@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { CalculatorButton } from './calculator-button/calculator-button';
 import { CalculatorDisplay } from './calculator-display/calculator-display';
@@ -10,7 +10,7 @@ import './styles.scss';
  * Component props.
  * @property {ICalculatorLogic} calculatorLogic - calculator logic provider.
  */
-type TProps = {
+export type TProps = {
   calculatorLogic: ICalculatorLogic;
 };
 
@@ -36,7 +36,7 @@ export class Calculator extends React.Component<TProps, TState> {
     this.setState({
       value: this.props.calculatorLogic.handleInput((event.target as HTMLElement).innerText)
     });
-  }
+  };
 
   /**
    * Handle keyboard selection event ( space or enter ).
@@ -44,13 +44,13 @@ export class Calculator extends React.Component<TProps, TState> {
    */
   public pressedKey: (event: React.KeyboardEvent) => void = (event: React.KeyboardEvent): void => {
     if ('Enter' === event.key || ' ' === event.key) {
-      if (event.target && event.target instanceof HTMLElement) {
+      if (event.target) {
         this.setState({
           value: this.props.calculatorLogic.handleInput((event.target as HTMLElement).innerText)
         });
       }
     }
-  }
+  };
 
   /**
    * Render.
@@ -58,86 +58,105 @@ export class Calculator extends React.Component<TProps, TState> {
    */
   public render(): JSX.Element {
     // button definitions
-    const buttons: {id: number, cap: string; classes: string}[] = [{
+    const buttons: {id: number, cap: string, classes: string, testid: string}[] = [{
       id: 0,
       classes: 'calculator__element calculator__element--value calculator__element--small calculator__element--cell-clear',
-      cap: 'clear'
+      cap: 'clear',
+      testid: 'clear'
     }, {
       id: 1,
       classes: 'calculator__element calculator__element--action calculator__element--cell-divide',
-      cap: '\u00f7'
+      cap: '\u00f7',
+      testid: 'divide'
     }, {
       id: 2,
       classes: 'calculator__element calculator__element--value calculator__element--cell-seven',
-      cap: '7'
+      cap: '7',
+      testid: 'seven'
     }, {
       id: 3,
       classes: 'calculator__element calculator__element--value calculator__element--cell-eight',
-      cap: '8'
+      cap: '8',
+      testid: 'eight'
     }, {
       id: 4,
       classes: 'calculator__element calculator__element--value calculator__element--cell-nine',
-      cap: '9'
+      cap: '9',
+      testid: 'nine'
     }, {
       id: 5,
       classes: 'calculator__element calculator__element--action calculator__element--cell-multiply',
-      cap: 'x'
+      cap: 'x',
+      testid: 'multiply'
     }, {
       id: 6,
       classes: 'calculator__element calculator__element--value calculator__element--cell-four',
-      cap: '4'
+      cap: '4',
+      testid: 'four'
     }, {
       id: 7,
       classes: 'calculator__element calculator__element--value calculator__element--cell-five',
-      cap: '5'
+      cap: '5',
+      testid: 'five'
     }, {
       id: 8,
       classes: 'calculator__element calculator__element--value calculator__element--cell-six',
-      cap: '6'
+      cap: '6',
+      testid: 'six'
     }, {
       id: 9,
       classes: 'calculator__element calculator__element--action calculator__element--cell-subtract',
-      cap: '-'
+      cap: '-',
+      testid: 'subtract'
     }, {
       id: 10,
       classes: 'calculator__element calculator__element--value calculator__element--cell-one',
-      cap: '1'
+      cap: '1',
+      testid: 'one'
     }, {
       id: 11,
       classes: 'calculator__element calculator__element--value calculator__element--cell-two',
-      cap: '2'
+      cap: '2',
+      testid: 'two'
     }, {
       id: 12,
       classes: 'calculator__element calculator__element--value calculator__element--cell-three',
-      cap: '3'
+      cap: '3',
+      testid: 'three'
     }, {
       id: 13,
       classes: 'calculator__element calculator__element--action calculator__element--cell-plus',
-      cap: '+'
+      cap: '+',
+      testid: 'add'
     }, {
       id: 14,
       classes: 'calculator__element calculator__element--value calculator__element--cell-zero',
-      cap: '0'
+      cap: '0',
+      testid: 'zero'
     }, {
       id: 15,
       classes: 'calculator__element calculator__element--action calculator__element--cell-equal',
-      cap: '='
+      cap: '=',
+      testid: 'equal'
     }];
 
     return (
       <section className="calculator">
         <CalculatorDisplay
           className="calculator__element calculator__element--cell-display"
-          value={ this.state.value }/>
+          value={ this.state.value }
+          data-testid="display"
+        />
 
-        {buttons.map((button: {id: number; cap: string; classes: string}, index: number) => (
+        {buttons.map((button: {id: number, cap: string, classes: string, testid: string}, index: number) => (
           <CalculatorButton
             key={ button.id }
             tabIndex={ index + 1 }
             className={ button.classes }
             cap={ button.cap }
             clickHandler={ this.clickButton }
-            keyHandler={ this.pressedKey }                  
+            keyHandler={ this.pressedKey }
+            data-testid={ button.testid }
           />
         ))}
       </section>

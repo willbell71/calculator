@@ -63,7 +63,6 @@ module.exports = {
     'semi': ['error', 'always'],
     'no-unreachable': 'error',
     'default-case': 'error',
-    'no-shadow': 'error',
     'arrow-spacing': 'error',
     'comma-dangle': ['error', 'never'],
     'max-len': ['error', 140],
@@ -85,9 +84,10 @@ module.exports = {
     }],
     '@typescript-eslint/quotes': ['error', 'single'],
     '@typescript-eslint/no-inferrable-types': 'off',
-    '@typescript-eslint/interface-name-prefix': ['error', 'always'],
+    // '@typescript-eslint/interface-name-prefix': ['error', 'always'],
     '@typescript-eslint/member-ordering': ['error', {classes: ['constructor', 'private-instance-method', 'public-instance-method']}],
     '@typescript-eslint/explicit-member-accessibility': 'error',
-    '@typescript-eslint/no-explicit-any': 'warn'
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-shadow': 'error'
   }
 };
